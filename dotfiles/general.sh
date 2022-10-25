@@ -46,15 +46,6 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 
-# Check for software updates daily, not just once per week
-echo ""
-echo "Check for software updates daily, not just once per week? (y/n)"
-read -r response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
-fi
-
-
 echo "#-----------------------------------------------------------------#"
 echo "#                          LaunchPad                              #"
 echo "#-----------------------------------------------------------------#"
