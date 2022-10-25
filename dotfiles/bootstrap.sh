@@ -70,15 +70,45 @@ if [ $? -ne 0 ]; then
   fi
 fi
 
-./general.sh
+echo ""
+cecho "Source General dotfile? (y/n)" $red
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  source ./general.sh
+fi
 
-./finder.sh
+echo ""
+cecho "Source Finder dotfile? (y/n)" $red
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  source ./finder.sh
+fi
 
-./adblock.sh
+echo ""
+cecho "Source Adblock dotfile? (y/n)" $red
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  source ./adblock.sh
+fi
 
-./git.sh
+echo ""
+cecho "Source Git dotfile? (y/n)" $red
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  source ./git.sh
+fi
 
-./xcode.sh
+echo ""
+cecho "Source Xcode dotfile? (y/n)" $red
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  source ./xcode.sh
+fi
 
-./brew.sh
+echo ""
+cecho "Source Brew dotfile? (y/n)" $red
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  source ./brew.sh
+fi
 
