@@ -1,44 +1,35 @@
 #!/usr/bin/env zsh
 
-# echo ""
-# echo "Would you like to set your computer name (as done via System Preferences >> Sharing)?  (y/n)"
-# read -r response
-# if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-#   echo "What would you like it to be?"
-#   read COMPUTER_NAME
-#   sudo scutil --set ComputerName $COMPUTER_NAME
-#   sudo scutil --set HostName $COMPUTER_NAME
-#   sudo scutil --set LocalHostName $COMPUTER_NAME
-#   sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
-# fi
+echo "#-----------------------------------------------------------------#"
+echo "#                       General UI/UX                             #"
+echo "#-----------------------------------------------------------------#"
+echo ""
 
-# echo ""
-# echo "Hide the Time Machine, Volume, User, and Bluetooth icons?  (y/n)"
-# read -r response
-# if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-#   # Get the system Hardware UUID and use it for the next menubar stuff
-#   for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; do
-#     defaults write "${domain}" dontAutoLoad -array \
-#       "/System/Library/CoreServices/Menu Extras/TimeMachine.menu" \
-#       "/System/Library/CoreServices/Menu Extras/Volume.menu" \
-#       "/System/Library/CoreServices/Menu Extras/User.menu"
-#   done
+# Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
+echo ""
+echo "Enable admin info for login screen clock? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+fi
 
-#   defaults write com.apple.systemuiserver menuExtras -array \
-#     "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" \
-#     "/System/Library/CoreServices/Menu Extras/AirPort.menu" \
-#     "/System/Library/CoreServices/Menu Extras/Battery.menu" \
-#     "/System/Library/CoreServices/Menu Extras/Clock.menu"
-# fi
+# Disable the sound effects on boot
+echo ""
+echo "Disable the sound effects on boot? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  sudo nvram SystemAudioVolume=" "
+fi
 
+# Hide Spotlight in menu bar
 echo ""
 echo "Hide the Spotlight icon? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults -currentHost write com.apple.Spotlight MenuItemHidden -int 1
-  defaults write com.apple.Siri StatusMenuVisible -bool false
 fi
 
+# Hide Siri in menu bar
 echo ""
 echo "Hide the Siri icon? (y/n)"
 read -r response
@@ -46,14 +37,42 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.Siri StatusMenuVisible -bool false
 fi
 
+# Check for software updates daily, not just once per week
 echo ""
-echo "Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window"
-sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+echo "Check for software updates daily, not just once per week? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+fi
 
-echo ""
-echo "Check for software updates daily, not just once per week"
-defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 
+# Check for software updates daily, not just once per week
 echo ""
-echo "Disable the sound effects on boot"
-sudo nvram SystemAudioVolume=" "
+echo "Check for software updates daily, not just once per week? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+fi
+
+
+echo "#-----------------------------------------------------------------#"
+echo "#                          LaunchPad                              #"
+echo "#-----------------------------------------------------------------#"
+echo ""
+
+# Change the Rows and Columns of Launchpad
+echo ""
+echo "Change the Rows and Columns of Launchpad? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  echo "How many Rows?"
+  read -r rows
+  defaults write com.apple.springboard-rows -int $rows
+
+  echo "How many Columns? (y/n)"
+  read -r columns
+  defaults write com.apple.springboard-columns -int $columns
+  defaults write com.apple.dock ResetLaunchPad -bool TRUE
+  killall Dock
+
+fi
