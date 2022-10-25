@@ -5,6 +5,19 @@
 # @author Adam Eivy
 ###
 
+# Set the colours you can use for cecho
+black='\033[0;30m'
+white='\033[0;37m'
+red='\033[0;31m'
+green='\033[0;32m'
+yellow='\033[0;33m'
+blue='\033[0;34m'
+magenta='\033[0;35m'
+cyan='\033[0;36m'
+
+# Resets the style
+reset=`tput sgr0`
+
 # Colors
 ESC_SEQ="\x1b["
 COL_RESET=$ESC_SEQ"39;49;00m"
@@ -26,6 +39,14 @@ function ok() {
 
 function bot() {
     echo -e "\n$COL_GREEN\[._.]/$COL_RESET - "$1
+}
+
+function botq() {
+    echo -e "\n$COL_YELLOW\[._.]/ - $1 $COL_RESET"
+}
+
+function botc() {
+    echo -e "\n$COL_GREEN\[._.]/ - ${2}${1} $COL_RESET"
 }
 
 function running() {

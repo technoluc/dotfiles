@@ -1,13 +1,13 @@
 #!/usr/bin/env zsh
 
-echo "#-----------------------------------------------------------------#"
-echo "#                            Finder                               #"
-echo "#-----------------------------------------------------------------#"
+cecho "#-----------------------------------------------------------------#" $green
+cecho "#                            Finder                               #" $green
+cecho "#-----------------------------------------------------------------#" $green
 echo ""
 
 # Set HOME as the default location for new Finder windows
 echo ""
-echo "Set HOME as the default location for new Finder windows? (y/n)"
+botq "Set HOME as the default location for new Finder windows? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.finder NewWindowTarget -string "PfLo"
@@ -16,7 +16,7 @@ fi
 
 # Show the ~/Library folder
 echo ""
-echo "Show the ~/Library folder? (y/n)"
+botq "Show the ~/Library folder? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   chflags nohidden ~/Library
@@ -24,7 +24,7 @@ fi
 
 # Finder: Show hidden files by default
 echo ""
-echo "Show hidden files by default? (y/n)"
+botq "Show hidden files by default? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.finder AppleShowAllFiles -bool true
@@ -32,7 +32,7 @@ fi
 
 # Finder: Show all filename extensions
 echo ""
-echo "Show all filename extensions? (y/n)"
+botq "Show all filename extensions? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write NSGlobalDomain AppleShowAllExtensions -bool true
@@ -40,7 +40,7 @@ fi
 
 # Finder: Show status bar
 echo ""
-echo "Show status bar? (y/n)"
+botq "Show status bar? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.finder ShowStatusBar -bool true
@@ -48,7 +48,7 @@ fi
 
 # Finder: Show path bar
 echo ""
-echo "Show path bar? (y/n)"
+botq "Show path bar? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.finder ShowPathbar -bool true
@@ -57,7 +57,7 @@ fi
 
 # Finder: Keep folders on top when sorting by name
 echo ""
-echo "Keep folders on top when sorting by name? (y/n)"
+botq "Keep folders on top when sorting by name? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.Finder _FXSortFoldersFirst -bool true
@@ -65,7 +65,7 @@ fi
 
 # Allow text selection in Quick Look
 echo ""
-echo "Allow text selection in Quick Look? (y/n)"
+botq "Allow text selection in Quick Look? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.finder QLEnableTextSelection -bool TRUE
@@ -73,7 +73,7 @@ fi
 
 # Disable the warning when changing a file extension
 echo ""
-echo "Disable the warning when changing a file extension? (y/n)"
+botq "Disable the warning when changing a file extension? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
@@ -81,7 +81,7 @@ fi
 
 # Enable calculate all sizes
 echo ""
-echo "Calculate all folder sizes? (y/n)"
+botq "Calculate all folder sizes? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   /usr/libexec/PlistBuddy "$HOME/Library/Preferences/com.apple.finder.plist" -c 'Delete "StandardViewSettings:ExtendedListViewSettings:calculateAllSizes" bool'
@@ -97,7 +97,7 @@ fi
 
 # Enabling snap-to-grid for icons on the desktop and in other icon views
 echo ""
-echo "Enabling snap-to-grid for icons on the desktop and in other icon views? (y/n)"
+botq "Enabling snap-to-grid for icons on the desktop and in other icon views? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
@@ -108,7 +108,7 @@ fi
 
 # Avoid creating .DS_Store files on network volumes
 echo ""
-echo "Avoid creating .DS_Store files on network Volumes? (y/n)"
+botq "Avoid creating .DS_Store files on network Volumes? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
@@ -116,7 +116,7 @@ fi
 
 # Avoid creating .DS_Store files on USB volumes
 echo ""
-echo "Avoid creating .DS_Store files on USB Volumes? (y/n)"
+botq "Avoid creating .DS_Store files on USB Volumes? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
@@ -124,7 +124,7 @@ fi
 
 # Disable disk image verification
 echo ""
-echo "Disable disk image verification? (y/n)"
+botq "Disable disk image verification? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.frameworks.diskimages skip-verify -bool true
@@ -134,7 +134,7 @@ fi
 
 # Expand save panel by default
 echo ""
-echo "Expand save panel by default? (y/n)"
+botq "Expand save panel by default? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -143,7 +143,7 @@ fi
 
 # Expand print panel by default
 echo ""
-echo "Expand print panel by default? (y/n)"
+botq "Expand print panel by default? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
