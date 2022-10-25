@@ -6,6 +6,23 @@
 
 bot "ensuring build/install tools are available"
 if ! xcode-select --print-path &> /dev/null; then
+  botc "Xcode is not installed" $red
+  botc "Trying to install Xcode" $green
+  xcode-select --install
+  sleep 1
+  osascript <<-EOD
+	  tell application "System Events"
+	    tell process "Install Command Line Developer Tools"
+	      keystroke return
+	      click button "Agree" of window "License Agreement"
+	    end tell
+	  end tell
+EOD
+
+fi
+
+
+
 
     # Prompt user to install the XCode Command Line Tools
     xcode-select --install &> /dev/null
@@ -24,6 +41,3 @@ if ! xcode-select --print-path &> /dev/null; then
 
     sudo xcodebuild -license
     print_result $? 'Agree with the XCode Command Line Tools licence'
-
-fi
-
