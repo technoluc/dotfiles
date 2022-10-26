@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
+declare -r GITHUB_REPOSITORY="technoluc/dotfiles"
+declare DOTFILES_DIR="$HOME/.dotfiles"
+declare -r DOTFILES_ORIGIN="git@github.com:$GITHUB_REPOSITORY.git"
+
 # Colors
 ESC_SEQ="\x1b["
 COL_RESET=$ESC_SEQ"39;49;00m"
-COL_RED=$ESC_SEQ"31;01m"
 COL_GREEN=$ESC_SEQ"32;01m"
 COL_YELLOW=$ESC_SEQ"33;01m"
-COL_BLUE=$ESC_SEQ"34;01m"
-COL_MAGENTA=$ESC_SEQ"35;01m"
-COL_CYAN=$ESC_SEQ"36;01m"
 
 function ok() {
     echo -e "$COL_GREEN[ok]$COL_RESET "$1
@@ -41,3 +41,5 @@ else
   ok "Xcode CLI tools OK"
 fi
 
+git clone —recursive git@github.com:technoluc/dotfiles.git $DOTFILES_DIR
+cd $DOTFILES_DIR && cd macos && sh bootstrap.sh
