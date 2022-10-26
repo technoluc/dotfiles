@@ -7,13 +7,13 @@ export DOTFILES_DIR=$HOME/.dotfiles
 
 
 echo ""
-cecho "###############################################" $red
-cecho "#                                             #" $red
-cecho "#                                             #" $red
-cecho "#      TechnoLuc's macos bootstrap script     #" $red
-cecho "#                                             #" $red
-cecho "#                                             #" $red
-cecho "###############################################" $red
+cecho "########################################################" $red
+cecho "#                                                      #" $red
+cecho "#                                                      #" $red
+cecho "#            TechnoLuc's macos bootstrap script        #" $red
+cecho "#                                                      #" $red
+cecho "#                                                      #" $red
+cecho "########################################################" $red
 echo ""
 
 bot "Hi! I'm going to install tooling and tweak your system settings. Here I go..."
@@ -72,42 +72,42 @@ echo ""
 botq "Source Xcode dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source ./scripts/xcode.sh
+  source ./macos/xcode.sh
 fi
 
 echo ""
 botq "Source General dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source ./general.sh
+  source ./macos/general.sh
 fi
 
 echo ""
 botq "Source Finder dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source ./scripts/finder.sh
+  source ./macos/finder.sh
 fi
 
 echo ""
 botq "Source Adblock dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source ./scripts/adblock.sh
+  source ./macos/adblock.sh
 fi
 
 echo ""
 botq "Source Git dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source ./scripts/git.sh
+  source ./macos/git.sh
 fi
 
 echo ""
 botq "Source Brew dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source ./scripts/brew.sh
+  source ./macos/brew.sh
 fi
 
 botc "All done! Enjoy your mac" $green
