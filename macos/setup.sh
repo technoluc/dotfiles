@@ -41,5 +41,6 @@ else
   ok "Xcode CLI tools OK"
 fi
 
+mkdir -p $DOTFILES_DIR
 git clone —recursive git@github.com:technoluc/dotfiles.git $DOTFILES_DIR
 cd $DOTFILES_DIR && cd macos && sh bootstrap.sh
