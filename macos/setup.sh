@@ -22,23 +22,28 @@ function botq() {
     echo -e "\n$COL_YELLOW\[._.]/ - $1 $COL_RESET"
 }
 
+
 bot "ensuring build/install tools are available"
-# Only run if the tools are not installed yet
-# To check that try to print the SDK path
-xcode-select -p &> /dev/null
-if [ $? -ne 0 ]; then
-  bot "Xcode CLI tools not found. Installing them..."
-  touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
-  PROD=$(softwareupdate -l |
-    grep "\*.*Command Line" |
-    head -n 1 | awk -F"*" '{print $2}' |
-    sed -e 's/^ *//' |
-    cut -c 8- | 
-    tr -d '\n')
-  softwareupdate -i "$PROD" --verbose
-  ok "Xcode CLI tools installed";
-else
-  ok "Xcode CLI tools OK"
+if ! xcode-select --print-path &> /dev/null; then
+
+    bot "Xcode CLI tools not found. Installing them..."
+    touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
+    PROD=$(softwareupdate -l |
+      grep "\*.*Command Line" |
+      head -n 1 | awk -F"*" '{print $2}' |
+      sed -e 's/^ *//' |
+      cut -c 8- | 
+      tr -d '\n')
+    softwareupdate -i "$PROD" --verbose &> /dev/null
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+    # Wait until the XCode Command Line Tools are installed
+    until xcode-select --print-path &> /dev/null; do
+        sleep 5
+    done
+
+    print_result $? ' XCode Command Line Tools Installed'
+
 fi
 
 mkdir -p $DOTFILES_DIR

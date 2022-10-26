@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
 
-source ./lib_sh/echos.sh
-source ./lib_sh/requirers.sh
-
 export DOTFILES_DIR=$HOME/.dotfiles
+
+source $DOTFILES_DIR/lib_sh/echos.sh
+source $DOTFILES_DIR/lib_sh/requirers.sh
 
 
 echo ""
-cecho "########################################################" $red
-cecho "#                                                      #" $red
-cecho "#                                                      #" $red
-cecho "#            TechnoLuc's macos bootstrap script        #" $red
-cecho "#                                                      #" $red
-cecho "#                                                      #" $red
-cecho "########################################################" $red
+cecho "#######################################################################" $green
+cecho "#                                                                     #" $green
+cecho "#                                                                     #" $green
+cecho "#                 TechnoLuc's macos bootstrap script                  #" $green
+cecho "#                                                                     #" $green
+cecho "#                                                                     #" $green
+cecho "#######################################################################" $green
 echo ""
 
 bot "Hi! I'm going to install tooling and tweak your system settings. Here I go..."
@@ -68,46 +68,46 @@ if [ $? -ne 0 ]; then
  # pfi
 fi
 
-echo ""
-botq "Source Xcode dotfile? (y/n)"
-read -r response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source ./macos/xcode.sh
-fi
+# echo ""
+# botq "Source Xcode dotfile? (y/n)"
+# read -r response
+# if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+#   source $DOTFILES_DIR/macos/xcode.sh
+# fi
 
 echo ""
 botq "Source General dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source ./macos/general.sh
+  source $DOTFILES_DIR/macos/general.sh
 fi
 
 echo ""
 botq "Source Finder dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source ./macos/finder.sh
+  source $DOTFILES_DIR/macos/finder.sh
 fi
 
 echo ""
 botq "Source Adblock dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source ./macos/adblock.sh
+  source $DOTFILES_DIR/macos/adblock.sh
 fi
 
 echo ""
 botq "Source Git dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source ./macos/git.sh
+  source $DOTFILES_DIR/macos/git.sh
 fi
 
 echo ""
 botq "Source Brew dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source ./macos/brew.sh
+  source $DOTFILES_DIR/macos/brew.sh
 fi
 
 botc "All done! Enjoy your mac" $green

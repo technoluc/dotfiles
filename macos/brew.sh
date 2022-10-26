@@ -15,8 +15,9 @@ if [[ $? != 0 ]]; then
   brew analytics off
 else
   ok
-  bot "Homebrew"
-  read -r -p "run brew update && upgrade? [y|N] " response
+  echo ""
+  botq "run brew update && upgrade? [y|N]"
+  read -r response 
   if [[ $response =~ (y|yes|Y) ]]; then
     action "updating homebrew..."
     brew update

@@ -2,5 +2,5 @@
 
 
 ```sh
-git clone —recursive git@github.com:technoluc/dotfiles.git ~/.dotfiles
+bash -c "$(curl -LsS https://raw.github.com/technoluc/dotfiles/main/setup.sh)"
 ```
