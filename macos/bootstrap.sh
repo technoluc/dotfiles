@@ -3,6 +3,9 @@
 source ./lib_sh/echos.sh
 source ./lib_sh/requirers.sh
 
+export DOTFILES_DIR=$HOME/.dotfiles
+
+
 echo ""
 cecho "###############################################" $red
 cecho "#                                             #" $red

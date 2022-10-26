@@ -28,3 +28,11 @@ else
     ok "skipped brew package upgrades."
   fi
 fi
+
+echo ""
+botq "Install apps via Brewfile? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  brew tap homebrew/bundle
+  brew bundle --file Brewfile
+fi
