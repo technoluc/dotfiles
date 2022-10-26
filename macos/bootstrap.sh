@@ -54,32 +54,20 @@ if [ $? -ne 0 ]; then
       
       botq "You can now run sudo commands without password!" $green
   fi
-
-  # botq "Do you want me to setup this machine to allow you to run sudo without a password?\nPlease read here to see what I am doing:\nhttp://wiki.summercode.com/sudo_without_a_password_in_mac_os_x \n"
-
- # read -r -p "Make sudo passwordless? [y|N] " response
-
- # if [[ $response =~ (yes|y|Y) ]];then
- #     if ! grep -q "#includedir /private/etc/sudoers.d" /etc/sudoers; then
- #      echo '#includedir /private/etc/sudoers.d' | sudo tee -a /etc/sudoers > /dev/null
- #     fi
- #     echo -e "Defaults:$LOGNAME    !requiretty\n$LOGNAME ALL=(ALL) NOPASSWD:     ALL" | sudo tee /etc/sudoers.d/$LOGNAME
- #     botq "You can now run sudo commands without password!" $green
- # pfi
 fi
-
-# echo ""
-# botq "Source Xcode dotfile? (y/n)"
-# read -r response
-# if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-#   source $DOTFILES_DIR/macos/xcode.sh
-# fi
 
 echo ""
 botq "Source General dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   source $DOTFILES_DIR/macos/general.sh
+fi
+
+echo ""
+botq "Source Input dotfile? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  source $DOTFILES_DIR/macos/input.sh
 fi
 
 echo ""
@@ -90,11 +78,18 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
 fi
 
 echo ""
-botq "Source Adblock dotfile? (y/n)"
+botq "Source Safari dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source $DOTFILES_DIR/macos/adblock.sh
+  source $DOTFILES_DIR/macos/safari.sh
 fi
+
+# echo ""
+# botq "Source Adblock dotfile? (y/n)"
+# read -r response
+# if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+#   source $DOTFILES_DIR/macos/adblock.sh
+# fi
 
 echo ""
 botq "Source Git dotfile? (y/n)"
@@ -110,4 +105,37 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   source $DOTFILES_DIR/macos/brew.sh
 fi
 
-botc "All done! Enjoy your mac" $green
+echo ""
+botq "Source Office dotfile? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  source $DOTFILES_DIR/macos/office.sh
+fi
+
+echo ""
+botq "Source Dock dotfile? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  source $DOTFILES_DIR/macos/dock.sh
+fi
+
+echo ""
+botq "Source Terminal dotfile? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  source $DOTFILES_DIR/macos/terminal.sh
+fi
+
+###############################################################################
+# Kill affected applications                                                  #
+###############################################################################
+bot "OK. Note that some of these changes require a logout/restart to take effect. Killing affected applications (so they can reboot)...."
+for app in "Activity Monitor" "cfprefsd" \
+  "Dock" "Finder" "Safari" "SystemUIServer" \
+  "Terminal"; do
+  killall "${app}" > /dev/null 2>&1
+done
+
+brew update && brew upgrade && brew cleanup
+
+bot "Woot! All done"
