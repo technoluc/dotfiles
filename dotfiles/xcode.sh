@@ -24,8 +24,8 @@ fi
 
 
 
-    # Prompt user to install the XCode Command Line Tools
-    xcode-select --install &> /dev/null
+#    # Prompt user to install the XCode Command Line Tools
+#    xcode-select --install &> /dev/null
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -39,5 +39,5 @@ fi
     # Prompt user to agree to the terms of the Xcode license
     # https://github.com/alrra/dotfiles/issues/10
 
-    sudo xcodebuild -license
-    print_result $? 'Agree with the XCode Command Line Tools licence'
+#    sudo xcodebuild -license
+#    print_result $? 'Agree with the XCode Command Line Tools licence'
