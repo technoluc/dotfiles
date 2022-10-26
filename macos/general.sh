@@ -3,7 +3,7 @@
 cecho "#-----------------------------------------------------------------#" $green
 cecho "#                       General UI/UX                             #" $green
 cecho "#-----------------------------------------------------------------#" $green
-cecho ""
+echo ""
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock in the login window
 echo ""
@@ -45,6 +45,12 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
 fi
 
+echo ""
+botq "Disable the “Are you sure you want to open this application?” dialog? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  defaults write com.apple.LaunchServices LSQuarantine -bool false
+fi
 
 cecho "#-----------------------------------------------------------------#" $green
 cecho "#                          LaunchPad                              #" $green
@@ -67,3 +73,18 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   killall Dock
 
 fi
+
+cecho "#-----------------------------------------------------------------#" $green
+cecho "#                             Misc                                #" $green
+cecho "#-----------------------------------------------------------------#" $green
+echo ""
+
+# Disable auto-correct
+echo ""
+botq "Disable auto-correct? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+fi
+
+

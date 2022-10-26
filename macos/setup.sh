@@ -2,7 +2,7 @@
 
 declare -r GITHUB_REPOSITORY="technoluc/dotfiles"
 declare DOTFILES_DIR="$HOME/.dotfiles"
-declare -r DOTFILES_ORIGIN="git@github.com:$GITHUB_REPOSITORY.git"
+declare -r DOTFILES_ORIGIN="https://github.com/$GITHUB_REPOSITORY.git"
 
 # Colors
 ESC_SEQ="\x1b["
@@ -18,10 +18,6 @@ function bot() {
     echo -e "\n$COL_GREEN\[._.]/$COL_RESET - "$1
 }
 
-function botq() {
-    echo -e "\n$COL_YELLOW\[._.]/ - $1 $COL_RESET"
-}
-
 
 bot "ensuring build/install tools are available"
 if ! xcode-select --print-path &> /dev/null; then
@@ -34,7 +30,7 @@ if ! xcode-select --print-path &> /dev/null; then
       sed -e 's/^ *//' |
       cut -c 8- | 
       tr -d '\n')
-    softwareupdate -i "$PROD" --verbose &> /dev/null
+    softwareupdate -i "$PROD" &> /dev/null
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     # Wait until the XCode Command Line Tools are installed
@@ -42,10 +38,14 @@ if ! xcode-select --print-path &> /dev/null; then
         sleep 5
     done
 
-    print_result $? ' XCode Command Line Tools Installed'
+    # print_result $? ' XCode Command Line Tools Installed'
 
 fi
 
+ok "XCode Command Line Tools installed!"
+
+
+bot "Cloning the dotfiles repository and starting the setup"
 mkdir -p $DOTFILES_DIR
-git clone https://github.com/technoluc/dotfiles.git $DOTFILES_DIR
+git clone $DOTFILES_ORIGIN $DOTFILES_DIR
 cd $DOTFILES_DIR/macos && sh bootstrap.sh
