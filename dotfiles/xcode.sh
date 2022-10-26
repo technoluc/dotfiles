@@ -5,20 +5,21 @@
 ###########################################################
 
 bot "ensuring build/install tools are available"
-if ! xcode-select --print-path &> /dev/null; then
-  botc "Xcode is not installed" $red
-  botc "Trying to install Xcode" $green
-  xcode-select --install
-  sleep 1
-  osascript <<-EOD
-	  tell application "System Events"
-	    tell process "Install Command Line Developer Tools"
-	      keystroke return
-	      click button "Agree" of window "License Agreement"
-	    end tell
-	  end tell
-EOD
-
+# Only run if the tools are not installed yet
+# To check that try to print the SDK path
+xcode-select -p &> /dev/null
+if [ $? -ne 0 ]; then
+  echo "Xcode CLI tools not found. Installing them..."
+  touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
+  PROD=$(softwareupdate -l |
+    grep "\*.*Command Line" |
+    head -n 1 | awk -F"*" '{print $2}' |
+    sed -e 's/^ *//' |
+    cut -c 8- | 
+    tr -d '\n')
+  softwareupdate -i "$PROD" --verbose;
+else
+  echo "Xcode CLI tools OK"
 fi
 
 
@@ -29,12 +30,12 @@ fi
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-    # Wait until the XCode Command Line Tools are installed
-    until xcode-select --print-path &> /dev/null; do
-        sleep 5
-    done
+#    # Wait until the XCode Command Line Tools are installed
+#    until xcode-select --print-path &> /dev/null; do
+#        sleep 5
+#    done
 
-    print_result $? ' XCode Command Line Tools Installed'
+#    print_result $? ' XCode Command Line Tools Installed'
 
     # Prompt user to agree to the terms of the Xcode license
     # https://github.com/alrra/dotfiles/issues/10
