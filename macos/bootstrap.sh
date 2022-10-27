@@ -129,13 +129,13 @@ fi
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
-bot "OK. Note that some of these changes require a logout/restart to take effect. Killing affected applications (so they can reboot)...."
-for app in "Activity Monitor" "cfprefsd" \
+
+botq "OK. Note that some of these changes require a logout/restart to take effect. Killing affected applications (so they can reboot)....? (y/n)"
+read -r response
+if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+  for app in "Activity Monitor" "cfprefsd" \
   "Dock" "Finder" "Safari" "SystemUIServer" \
   "Terminal"; do
   killall "${app}" > /dev/null 2>&1
-done
-
-brew update && brew upgrade && brew cleanup
-
-bot "Woot! All done"
+  done
+fi
