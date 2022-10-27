@@ -18,11 +18,10 @@ function bot() {
     echo -e "\n$COL_GREEN\[._.]/$COL_RESET - "$1
 }
 
-
 bot "ensuring build/install tools are available"
 if ! xcode-select --print-path &> /dev/null; then
 
-    bot "Xcode CLI tools not found. Installing them..."
+    bot "Xcode CLI tools not found but are essential for this script. Installing them..."
     touch /tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress;
     PROD=$(softwareupdate -l |
       grep "\*.*Command Line" |
@@ -30,7 +29,7 @@ if ! xcode-select --print-path &> /dev/null; then
       sed -e 's/^ *//' |
       cut -c 8- | 
       tr -d '\n')
-    softwareupdate -i "$PROD" &> /dev/null
+    softwareupdate -i "$PROD" --verbose &> /dev/null
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     # Wait until the XCode Command Line Tools are installed
