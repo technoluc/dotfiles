@@ -15,6 +15,6 @@ You don’t need to install or configure anything upfront! This works with a bra
 Run the following command to get started!
 
 ```sh
-bash -c "$(curl -LsS https://raw.github.com/technoluc/dotfiles/main/setup.sh)"
+bash -c "$(curl -LsS https://raw.github.com/technoluc/dotfiles/main/macos/setup.sh)"
 ```
 
