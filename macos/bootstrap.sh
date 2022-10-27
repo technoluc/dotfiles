@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export DOTFILES_DIR=$HOME/.dotfiles
+export DOTFILES_DIR=$HOME/.dotfiles/macos
 
 source $DOTFILES_DIR/lib_sh/echos.sh
 source $DOTFILES_DIR/lib_sh/requirers.sh
