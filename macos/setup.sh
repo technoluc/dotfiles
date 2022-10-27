@@ -47,5 +47,5 @@ ok "XCode Command Line Tools installed!"
 bot "Cloning the dotfiles repository and starting the setup"
 rm -rf $DOTFILES_DIR
 mkdir -p $DOTFILES_DIR
-git clone $DOTFILES_ORIGIN $DOTFILES_DIR
+git clone $DOTFILES_ORIGIN $DOTFILES_DIR &> /dev/null
 cd $DOTFILES_DIR/macos && sh bootstrap.sh
