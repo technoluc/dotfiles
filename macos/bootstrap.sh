@@ -60,28 +60,28 @@ echo ""
 botq "Source General dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source $DOTFILES_DIR/macos/general.sh
+  source $DOTFILES_DIR/general.sh
 fi
 
 echo ""
 botq "Source Input dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source $DOTFILES_DIR/macos/input.sh
+  source $DOTFILES_DIR/input.sh
 fi
 
 echo ""
 botq "Source Finder dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source $DOTFILES_DIR/macos/finder.sh
+  source $DOTFILES_DIR/finder.sh
 fi
 
 echo ""
 botq "Source Safari dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source $DOTFILES_DIR/macos/safari.sh
+  source $DOTFILES_DIR/safari.sh
 fi
 
 # echo ""
@@ -95,35 +95,35 @@ echo ""
 botq "Source Git dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source $DOTFILES_DIR/macos/git.sh
+  source $DOTFILES_DIR/git.sh
 fi
 
 echo ""
 botq "Source Brew dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source $DOTFILES_DIR/macos/brew.sh
+  source $DOTFILES_DIR/brew.sh
 fi
 
 echo ""
 botq "Source Office dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source $DOTFILES_DIR/macos/office.sh
+  source $DOTFILES_DIR/office.sh
 fi
 
 echo ""
 botq "Source Dock dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source $DOTFILES_DIR/macos/dock.sh
+  source $DOTFILES_DIR/dock.sh
 fi
 
 echo ""
 botq "Source Terminal dotfile? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source $DOTFILES_DIR/macos/terminal.sh
+  source $DOTFILES_DIR/terminal.sh
 fi
 
 ###############################################################################
