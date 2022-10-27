@@ -45,40 +45,40 @@ if [ $? -ne 0 ]; then
   # Keep-alive: update existing sudo time stamp until the script has finished
   while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-  botq "Do you want me to setup touchID for sudo commands? \n"
+  botc "Do you want me to setup touchID for sudo commands? \n" $COL_RED
 
   read -r -p "Enable TouchID sudo ? [y|N] " response
 
   if [[ $response =~ (yes|y|Y) ]];then
       sudo su root -c 'chmod +w /etc/pam.d/sudo && echo "auth       sufficient     pam_tid.so\n$(cat /etc/pam.d/sudo)" > /etc/pam.d/sudo && chmod -w /etc/pam.d/sudo'
       
-      botq "You can now run sudo commands without password!" $green
+      botc "You can now run sudo commands without password!" $COL_GREEN
   fi
 fi
 
 echo ""
-botq "Source General dotfile? (y/n)"
+botc "Source General dotfile? (y/n)" $COL_CYAN
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   source $DOTFILES_DIR/general.sh
 fi
 
 echo ""
-botq "Source Input dotfile? (y/n)"
+botc "Source Input dotfile? (y/n)" $COL_CYAN
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   source $DOTFILES_DIR/input.sh
 fi
 
 echo ""
-botq "Source Finder dotfile? (y/n)"
+botc "Source Finder dotfile? (y/n)" $COL_CYAN
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   source $DOTFILES_DIR/finder.sh
 fi
 
 echo ""
-botq "Source Safari dotfile? (y/n)"
+botc "Source Safari dotfile? (y/n)" $COL_CYAN
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   source $DOTFILES_DIR/safari.sh
@@ -92,35 +92,35 @@ fi
 # fi
 
 echo ""
-botq "Source Git dotfile? (y/n)"
+botc "Source Git dotfile? (y/n)" $COL_CYAN
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   source $DOTFILES_DIR/git.sh
 fi
 
 echo ""
-botq "Source Brew dotfile? (y/n)"
+botc "Source Brew dotfile? (y/n)" $COL_CYAN
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   source $DOTFILES_DIR/brew.sh
 fi
 
 echo ""
-botq "Source Office dotfile? (y/n)"
+botc "Source Office dotfile? (y/n)" $COL_CYAN
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   source $DOTFILES_DIR/office.sh
 fi
 
 echo ""
-botq "Source Dock dotfile? (y/n)"
+botc "Source Dock dotfile? (y/n)" $COL_CYAN
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   source $DOTFILES_DIR/dock.sh
 fi
 
 echo ""
-botq "Source Terminal dotfile? (y/n)"
+botc "Source Terminal dotfile? (y/n)" $COL_CYAN
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   source $DOTFILES_DIR/terminal.sh
@@ -130,7 +130,7 @@ fi
 # Kill affected applications                                                  #
 ###############################################################################
 
-botq "OK. Note that some of these changes require a logout/restart to take effect. Killing affected applications (so they can reboot)....? (y/n)"
+botc "OK. Note that some of these changes require a logout/restart to take effect. Killing affected applications (so they can reboot)....? (y/n)" $COL_RED
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   for app in "Activity Monitor" "cfprefsd" \
