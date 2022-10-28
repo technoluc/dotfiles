@@ -91,12 +91,12 @@ fi
 #   source $DOTFILES_DIR/macos/adblock.sh
 # fi
 
-echo ""
-botc "Source Git dotfile? (y/n)" $COL_CYAN
-read -r response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  source $DOTFILES_DIR/git.sh
-fi
+# echo ""
+# botc "Source Git dotfile? (y/n)" $COL_CYAN
+# read -r response
+# if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+#   source $DOTFILES_DIR/git.sh
+# fi
 
 echo ""
 botc "Source Brew dotfile? (y/n)" $COL_CYAN
