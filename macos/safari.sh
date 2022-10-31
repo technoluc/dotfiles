@@ -10,7 +10,7 @@ echo ""
 botq "Prevent Safari from opening safe files automatically after downloading? (y/n)"
 read -r response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  sudo defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+  defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 fi
 
 # Enable the Develop menu and the Web Inspector in Safari
