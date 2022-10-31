@@ -50,7 +50,7 @@ if [ $? -ne 0 ]; then
   read -r -p "Enable TouchID sudo ? [y|N] " response
 
   if [[ $response =~ (yes|y|Y) ]];then
-      sudo su root -c 'chmod +w /etc/pam.d/sudo && echo "auth       sufficient     pam_tid.so\n$(cat /etc/pam.d/sudo)" > /etc/pam.d/sudo && chmod -w /etc/pam.d/sudo'
+      sudo sed -i -- '2s/^/auth sufficient pam_tid.so\n/' /etc/pam.d/sudo
       
       botc "You can now run sudo commands without password!" $COL_GREEN
   fi
