@@ -73,7 +73,7 @@ cask 'quicklook-json'
 mas 'Infuse', id: 1136220934
 mas 'Keynote', id: 409183694
 mas 'Microsoft Remote Desktop', id: 1295203466
-mas 'NET_Toolkit', id: 836847379
+# mas 'NET_Toolkit', id: 836847379
 mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
 mas 'Shazam', id: 897118787
