@@ -3,34 +3,26 @@ tap 'homebrew/cask'
 tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'homebrew/bundle'
-# tap 'nicoverbruggen/homebrew-cask'
 
 # Binaries
-brew 'bash' # Latest Bash version
-brew 'coreutils' # Those that come with macOS are outdated
+brew 'bash'
+brew 'coreutils'
 brew 'ffmpeg'
 brew 'git-extras'
 brew 'git-flow'
 brew 'git'
 brew 'grep'
+brew 'jq'
 brew 'legit'
 brew 'mackup'
-brew 'mackup'
-brew 'mas' # Mac App Store manager
-brew 'pkg-config' # https://github.com/driesvints/dotfiles/issues/20
+brew 'mas'
+brew 'pkg-config'
 brew 'thefuck'
 brew 'wget'
 
-
-# brew 'awscli'
-# brew 'bat' # Used for spatie/visit
-# brew 'gh'
-# brew 'httpie'
-# brew 'jq' # Used for spatie/visit
-# brew 'svn' # Needed to install fonts
-
 # Apps
 cask 'alt-tab'
+cask 'balenaetcher'
 cask 'bartender'
 cask 'brave-browser'
 cask 'cyberduck'
@@ -38,23 +30,20 @@ cask 'devtoys'
 cask 'fig'
 cask 'github'
 cask 'google-chrome'
+cask 'iterm2'
 cask 'notion'
+cask 'platypus'
 cask 'powershell-preview'
+cask 'qbittorrent'
 cask 'raycast'
 cask 'spotify'
+cask 'ssh-config-editor'
 cask 'suspicious-package'
 cask 'telegram-desktop'
 cask 'termius'
 cask 'visual-studio-code'
 cask 'visual-studio-code'
 cask 'whatsapp'
-# cask 'docker'
-# cask 'figma'
-# cask 'pastebot'
-# cask 'phpmon'
-# cask 'the-unarchiver'
-# cask 'transmit'
-# cask 'tunnelbear'
 
 # Quicklook
 cask 'qlmarkdown'
@@ -79,23 +68,3 @@ mas 'Pages', id: 409201541
 mas 'Shazam', id: 897118787
 mas 'Speedtest', id: 1153157709
 mas 'WireGuard', id: 1451685025
-
-# Spatie Medialibrary
-# brew 'jpegoptim'
-# brew 'optipng'
-# brew 'pngquant'
-# brew 'svgo'
-# brew 'gifsicle'
-
-# Development
-# brew 'php'
-# brew 'php@8.0'
-# brew 'php@7.4'
-# brew 'composer'
-# brew 'imagemagick'
-# brew 'meilisearch'
-# brew 'mysql'
-# brew 'nginx'
-# brew 'node'
-# brew 'redis'
-# brew 'yarn'
