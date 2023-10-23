@@ -4,23 +4,26 @@ on:
   push:
     branches:
       - main
+      - test*
 
 jobs:
-  build:
+  build-runspace:
     runs-on: ubuntu-latest
-
     steps:
     - name: Check Out Repository
       uses: actions/checkout@v2
-
-    - name: Set up Zsh
-      run: |
-        sudo apt-get update
-        sudo apt-get install zsh
-      shell: bash
-
-    - name: Build Script
+      with:
+        ref: ${{ github.head_ref }}
+    - name: Run Build Script
       run: |
         chmod +x build.sh
         ./build.sh
+      shell: bash
+    - name: Commit Changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add .
+        git commit -m "Compile Office Utility"
+        git push
       shell: bash
