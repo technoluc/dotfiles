@@ -17,7 +17,7 @@ jobs:
     - name: Run Build Script
       run: |
         chmod +x build.zsh
-        ./build.sh
+        ./build.zsh
       shell: bash
     - name: Commit Changes
       run: |
