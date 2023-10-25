@@ -142,7 +142,7 @@ function setPlistValue {
     # Value doesn't exist, add it with the provided value
     local type
     # Determine the data type based on the value
-    if [[ "$value" == "YES" || "$value" == "NO" ]]; then
+    if [[ "$value" == "true" || "$value" == "false" ]]; then
       type="bool"
     elif [[ "$value" == *"."* ]]; then
       type="real"
