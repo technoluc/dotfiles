@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - test*
+      - v0.*
 
 jobs:
   build-runspace:
