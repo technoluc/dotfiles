@@ -16,7 +16,7 @@ jobs:
         ref: ${{ github.head_ref }}
     - name: Run Build Script
       run: |
-        chmod +x build.sh
+        chmod +x build.zsh
         ./build.sh
       shell: bash
     - name: Commit Changes
