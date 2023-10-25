@@ -1,4 +1,3 @@
-
 # Function to install apps using Homebrew from a Brewfile
 install_apps_with_brew() {
   if prompt_robot_no_default "Install apps with Homebrew from a Brewfile?"; then
@@ -28,3 +27,4 @@ install_apps_with_brew() {
     return 0
   fi
 }
+

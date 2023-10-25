@@ -22,7 +22,7 @@ function setPlistValue {
     # Value doesn't exist, add it with the provided value
     local type
     # Determine the data type based on the value
-    if [[ "$value" == "true" || "$value" == "false" ]]; then
+    if [[ "$value" == "YES" || "$value" == "NO" ]]; then
       type="bool"
     elif [[ "$value" == *"."* ]]; then
       type="real"
@@ -38,3 +38,4 @@ function setPlistValue {
     fi
   fi
 }
+

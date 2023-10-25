@@ -1,3 +1,7 @@
+############################################################################################
+#                                   START OF MAIN SCRIPT                                   #
+############################################################################################
+
 echo "Welcome to Mac Setup Script!"
 
 echo "Follow the prompts from the robot to set up your Mac."
@@ -22,3 +26,4 @@ customize_terminal_settings
 # You can add more functions here for customizing settings.
 
 show_ok "Mac setup is complete."
+

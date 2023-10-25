@@ -27,3 +27,4 @@ show_ok() {
 show_error() {
   echo -e "$ERROR_ROBOT Error: $1"
 }
+

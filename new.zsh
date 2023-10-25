@@ -14,7 +14,10 @@ fi
 #                           ANY MANUAL MODIFICATIONS MAY BE OVERWRITTEN                            #
 ####################################################################################################
 '
-    cat ./v2/scripts/start.zsh
-    find ./v2/functions -type f -print0 | xargs -0 cat
-    cat ./v2/scripts/main.zsh
-} > "$scriptname"
+    cat scripts/start.zsh
+    for file in functions/*.zsh; do
+        # Voeg elk bestand toe aan setup.zsh
+        cat "$file"
+    done
+    cat scripts/main.zsh
+} >"$scriptname"

@@ -1,4 +1,3 @@
-
 # Function to customize Terminal settings
 customize_terminal_settings() {
   if prompt_robot "Customize Terminal settings?"; then
@@ -18,3 +17,4 @@ customize_terminal_settings() {
     fi
   fi
 }
+

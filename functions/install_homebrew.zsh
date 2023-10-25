@@ -1,4 +1,3 @@
-
 # Function to install Homebrew
 install_homebrew() {
   if prompt_robot "Install Homebrew?"; then
@@ -12,3 +11,4 @@ install_homebrew() {
     fi
   fi
 }
+
